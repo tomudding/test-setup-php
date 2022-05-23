@@ -20,6 +20,8 @@ jobs:
                 with:
                     php-version: '8.1'
                     tools: cs2pr, phpcs:3.x-dev
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             -   name: Run PHPCS
                 run: phpcs --standard=PSR1,PSR12 --extensions=php,dist --report=checkstyle -q module config | cs2pr --graceful-warnings
